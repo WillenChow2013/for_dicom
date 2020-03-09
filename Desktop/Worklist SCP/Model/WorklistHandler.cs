@@ -15,8 +15,8 @@ namespace Worklist_SCP.Model
         public static IEnumerable<DicomDataset> FilterWorklistItems(DicomDataset request, List<WorklistItem> allWorklistItems)
         {
             var exams = allWorklistItems.AsQueryable();
-
-            if ( request.TryGetSingleValue(DicomTag.PatientID, out string patientId))
+            string patientId =null;
+            if ( request.TryGetSingleValue(DicomTag.PatientID, out patientId))
             {
                 exams = exams.Where(x => x.PatientID.Equals(patientId));
             }
@@ -180,7 +180,7 @@ namespace Worklist_SCP.Model
             {
                 if (value == null)
                 {
-                    value = default;
+                    value = default(T);
                 }
 
                 result.AddOrUpdate(tag, value);

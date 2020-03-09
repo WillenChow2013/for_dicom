@@ -20,7 +20,8 @@ namespace Worklist_SCP
          // Initialize log manager.
          LogManager.SetImplementation(ConsoleLogManager.Instance);
 
-         var port = args != null && args.Length > 0 && int.TryParse(args[0], out int tmp) ? tmp : 8005;
+            int tmp = 0;
+         var port = args != null && args.Length > 0 && int.TryParse(args[0], out tmp) ? tmp : 8005;
 
          Console.WriteLine($"Starting QR SCP server with AET: QRSCP on port {port}");
 
